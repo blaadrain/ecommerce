@@ -1,0 +1,45 @@
+'use client';
+
+import { Product } from '@/types';
+import Currency from './ui/currency';
+import Button from './ui/button';
+import { ShoppingCart } from 'lucide-react';
+
+type InfoProps = {
+  product: Product;
+};
+
+const Info: React.FC<InfoProps> = ({ product }) => {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold">{product.name}</h1>
+      <div className="mt-3 flex items-end justify-between">
+        <p className="text-2xl">
+          <Currency value={product.price} />
+        </p>
+      </div>
+      <hr className="my-4" />
+      <div className="flex flex-col gap-y-3">
+        <div className="flex items-center gap-x-2">
+          <h3 className="font-semibold">Size:</h3>
+          <span>{product.size.name}</span>
+        </div>
+        <div className="flex items-center gap-x-2">
+          <h3 className="font-semibold">Color:</h3>
+          <div
+            className="h-6 w-6 rounded-md border-gray-500"
+            style={{ backgroundColor: product?.color?.value }}
+          />
+        </div>
+      </div>
+      <div className="mt-10 flex items-center gap-x-3">
+        <Button className="flex items-center gap-x-2">
+          Add to cart
+          <ShoppingCart />
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Info;

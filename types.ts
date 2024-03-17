@@ -31,3 +31,7 @@ export type Color = {
   name: string;
   value: string;
 };
+
+export type Image = {
+  id: string;
+};
