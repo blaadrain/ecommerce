@@ -13,9 +13,9 @@ const NavItems: React.FC<NavItemsProps> = ({ data }) => {
   const pathname = usePathname();
 
   const routes = data.map(({ id, name }) => ({
-    href: `/category/${id}`,
+    href: `/categories/${id}`,
     name,
-    active: pathname.startsWith(`/category/${id}`),
+    active: pathname.startsWith(`/categories/${id}`),
   }));
 
   return (

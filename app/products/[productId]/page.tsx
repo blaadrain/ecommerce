@@ -11,11 +11,14 @@ type ProductPageProps = {
   };
 };
 
-const Product: React.FC<ProductPageProps> = async ({ params }) => {
+const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
-  const suggestedProducts = await getProducts({
+  const sameCategoryProducts = await getProducts({
     categoryId: product?.category?.id,
   });
+  const suggestedProducts = sameCategoryProducts.filter(
+    ({ id }) => id !== product?.id
+  );
 
   return (
     <Container>
@@ -26,14 +29,18 @@ const Product: React.FC<ProductPageProps> = async ({ params }) => {
             <Info product={product} />
           </div>
         </div>
-        <hr className="my-10" />
-        <ProductList
-          title="Related items"
-          products={suggestedProducts.filter(({ id }) => id !== product.id)}
-        />
+        {suggestedProducts.length > 0 && (
+          <>
+            <hr className="my-10" />
+            <ProductList
+              title="Related items"
+              products={suggestedProducts}
+            />
+          </>
+        )}
       </div>
     </Container>
   );
 };
 
-export default Product;
+export default ProductPage;
