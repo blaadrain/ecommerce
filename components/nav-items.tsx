@@ -25,7 +25,7 @@ const NavItems: React.FC<NavItemsProps> = ({ data }) => {
           key={href}
           href={href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-black',
+            'font-medium transition-colors hover:text-black',
             active ? 'text-black' : 'text-neutral-500'
           )}
         >

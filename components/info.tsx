@@ -4,19 +4,30 @@ import { Product } from '@/types';
 import Currency from './ui/currency';
 import Button from './ui/button';
 import { ShoppingCart } from 'lucide-react';
+import useCart from '@/hooks/use-cart';
 
 type InfoProps = {
   product: Product;
 };
 
 const Info: React.FC<InfoProps> = ({ product }) => {
+  const cart = useCart();
+
+  const addToCart = () => {
+    cart.addProduct(product);
+  };
+
+  const removeFromCart = () => {
+    cart.removeProduct(product.id);
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold">{product.name}</h1>
       <div className="mt-3 flex items-end justify-between">
-        <p className="text-2xl">
+        <div className="text-2xl">
           <Currency value={product.price} />
-        </p>
+        </div>
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-3">
@@ -33,10 +44,23 @@ const Info: React.FC<InfoProps> = ({ product }) => {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
-          Add to cart
-          <ShoppingCart />
-        </Button>
+        {cart.products.some(({ id }) => id === product.id) ? (
+          <Button
+            onClick={removeFromCart}
+            className="flex items-center gap-x-2"
+          >
+            Remove from cart
+            <ShoppingCart />
+          </Button>
+        ) : (
+          <Button
+            onClick={addToCart}
+            className="flex items-center gap-x-2"
+          >
+            Add to cart
+            <ShoppingCart />
+          </Button>
+        )}
       </div>
     </div>
   );
