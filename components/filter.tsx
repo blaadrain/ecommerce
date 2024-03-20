@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Color, Size } from '@/types';
-import { useRouter, useSearchParams } from 'next/navigation';
-import qs from 'query-string';
-import Button from './ui/button';
-import { cn } from '@/lib/utils';
+import { Color, Size } from "@/types";
+import { useRouter, useSearchParams } from "next/navigation";
+import qs from "query-string";
+import Button from "./ui/button";
+import { cn } from "@/lib/utils";
 
 type FilterProps = {
   valueKey: string;
@@ -34,7 +34,7 @@ const Filter: React.FC<FilterProps> = ({ valueKey, name, data }) => {
         url: window.location.href,
         query,
       },
-      { skipNull: true }
+      { skipNull: true },
     );
 
     router.push(url);
@@ -46,15 +46,12 @@ const Filter: React.FC<FilterProps> = ({ valueKey, name, data }) => {
       <hr className="my-4" />
       <div className="flex flex-wrap gap-2">
         {data.map((filter) => (
-          <div
-            key={filter.id}
-            className="flex items-center"
-          >
+          <div key={filter.id} className="flex items-center">
             <Button
               onClick={() => onClick(filter.id)}
               className={cn(
-                'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
-                selectedValue === filter.id && 'bg-black text-white'
+                "rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-800",
+                selectedValue === filter.id && "bg-black text-white",
               )}
             >
               {filter.name}

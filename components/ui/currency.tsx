@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { formatter } from '@/lib/utils';
-import { useEffect, useState } from 'react';
+import { formatter } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 type CurrencyProps = {
   value: string | number;

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Product } from '@/types';
-import Currency from './currency';
-import { useRouter } from 'next/navigation';
+import { Product } from "@/types";
+import Currency from "./currency";
+import { useRouter } from "next/navigation";
 
 type ProductCardProps = {
   product: Product;
@@ -18,11 +18,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div
       onClick={handleClick}
-      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+      className="group cursor-pointer space-y-4 rounded-xl border bg-white p-3"
     >
-      <div className="aspect-square rounded-xl bg-gray-100 relative" />
+      <div className="relative aspect-square rounded-xl bg-gray-100" />
       <div>
-        <p className="font-semibold text-lg">{product.name}</p>
+        <p className="text-lg font-semibold">{product.name}</p>
         <p className="text-sm text-gray-500">{product.category?.name}</p>
       </div>
       <div className="flex items-center justify-between">

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Button from './ui/button';
-import Currency from './ui/currency';
-import useCart from '@/hooks/use-cart';
-import { toast } from 'react-hot-toast';
+import axios from "axios";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Button from "./ui/button";
+import Currency from "./ui/currency";
+import useCart from "@/hooks/use-cart";
+import { toast } from "react-hot-toast";
 
 const Summary = () => {
   const router = useRouter();
@@ -18,23 +18,23 @@ const Summary = () => {
   const totalPrice = products.reduce((total, item) => total + +item.price, 0);
 
   useEffect(() => {
-    if (searchParams.get('success')) {
-      toast.success('Payment completed');
+    if (searchParams.get("success")) {
+      toast.success("Payment completed");
       clear();
     }
 
-    if (searchParams.get('canceled')) {
-      toast.error('Something went wrong');
+    if (searchParams.get("canceled")) {
+      toast.error("Something went wrong");
     }
   }, [searchParams, clear]);
 
   const onCheckout = async () => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      { productIds: products.map(({ id }) => id) }
+      { productIds: products.map(({ id }) => id) },
     );
 
-    router.push('/cart?success=1');
+    router.push("/cart?success=1");
   };
 
   return (
@@ -46,10 +46,7 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button
-        onClick={onCheckout}
-        className="w-full mt-6"
-      >
+      <Button onClick={onCheckout} className="mt-6 w-full">
         Checkout
       </Button>
     </div>

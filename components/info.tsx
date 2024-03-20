@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Product } from '@/types';
-import Currency from './ui/currency';
-import Button from './ui/button';
-import { ShoppingCart } from 'lucide-react';
-import useCart from '@/hooks/use-cart';
+import { Product } from "@/types";
+import Currency from "./ui/currency";
+import Button from "./ui/button";
+import { ShoppingCart } from "lucide-react";
+import useCart from "@/hooks/use-cart";
 
 type InfoProps = {
   product: Product;
@@ -53,10 +53,7 @@ const Info: React.FC<InfoProps> = ({ product }) => {
             <ShoppingCart />
           </Button>
         ) : (
-          <Button
-            onClick={addToCart}
-            className="flex items-center gap-x-2"
-          >
+          <Button onClick={addToCart} className="flex items-center gap-x-2">
             Add to cart
             <ShoppingCart />
           </Button>

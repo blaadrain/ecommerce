@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import { Category } from '@/types';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { cn } from "@/lib/utils";
+import { Category } from "@/types";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type NavItemsProps = {
   data: Category[];
@@ -25,8 +25,8 @@ const NavItems: React.FC<NavItemsProps> = ({ data }) => {
           key={href}
           href={href}
           className={cn(
-            'font-medium transition-colors hover:text-black',
-            active ? 'text-black' : 'text-neutral-500'
+            "font-medium transition-colors hover:text-black",
+            active ? "text-black" : "text-neutral-500",
           )}
         >
           {name}
