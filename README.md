@@ -2,6 +2,8 @@
 
 ![store](https://github.com/blaadrain/ecommerce-store/assets/96272057/43933663-c779-4048-a55c-b6e0f9988612)
 
+Make sure you have [Admin Dashboard](https://github.com/blaadrain/ecommerce-admin) setup first ❗
+
 Key Features:
 
 - Landing page with featured products
